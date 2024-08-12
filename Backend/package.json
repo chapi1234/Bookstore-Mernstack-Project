@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start-dev" : "nodemon index.js"
+    "start-dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,8 @@
   "type": "module",
   "dependencies": {
     "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "mongose": "^0.0.2-security",
     "nodemon": "^3.1.4"
   }
 }
