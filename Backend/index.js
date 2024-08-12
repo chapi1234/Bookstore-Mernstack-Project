@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { Book } from './models/bookModel.js';
 import { PORT, mongoDBURL } from './config.js';
 
-const app = express();
+const app = express(); 
 
 // Middleware for parsing request body
 app.use(express.json());
