@@ -1,11 +1,12 @@
-import {Book} from './models/bookModel.js'
-import express from 'express';
-import mongoose from 'mongoose'
+import {Book} from '../models/bookModel.js'
+import express from 'express'
+
+const router = express.Router();
 
 
 
 // Route for getting all books
-app.get('/books', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const books = await Book.find();
         return res.status(200).json({
@@ -18,7 +19,7 @@ app.get('/books', async (req, res) => {
 });   
 
 // Route for getting one book by id
-app.get('/books/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
 
         const { id } = request.params
@@ -32,7 +33,7 @@ app.get('/books/:id', async (req, res) => {
 });   
 
 // Route for saving a new Book
-app.post('/books', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         if (!req.body.title || !req.body.author || !req.body.publishYear) {
             return res.status(400).send({
@@ -55,7 +56,7 @@ app.post('/books', async (req, res) => {
 });
 
 //Route to update a Book
-app.put('/books/:id', async (request, response) => {
+router.put('/:id', async (request, response) => {
     try{
         if (
             !request.body.title ||
@@ -82,7 +83,7 @@ app.put('/books/:id', async (request, response) => {
 })
 
 // Route for delete a book
-app.delete('/books/:id', async(request,response) => {
+router.delete('/:id', async(request,response) => {
     try{
         const{id} = request.params
         const result = await Book.findByIdAndDelete(id);
@@ -98,3 +99,5 @@ app.delete('/books/:id', async(request,response) => {
         response.status(500).send({message: error.message })
     }
 });
+
+export default router;
